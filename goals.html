@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>My Goals as a Student</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link 
+href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@
+400;600;800&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+  <header> 
+    <span class="bear" aria-hidden="true"></span> 
+    <h1>Welcome to My Personal Website</h1> 
+  </header> 
+  <nav> 
+    <ul> 
+      <li><a href="index.html">HOME</a></li> 
+      <li class="dropdown"> 
+        <a href="#" class="dropbtn">ABOUT</a> 
+        <div class="dropdown-content"> 
+          <a href="skills.html">Skills I'm Developing</a> 
+          <a href="goals.html">My Goals as a Student</a> 
+          <a href="funfacts.html">Fun Facts About Me</a> 
+        </div> 
+      </li> 
+      <li><a href="gallery.html">GALLERY</a></li> 
+      <li><a href="contact.html">CONTACT</a></li> 
+      <li><a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">LOG 
+OUT</a></li> 
+    </ul> 
+  </nav> 
+ 
+  <section id="drop">
+    <h2>My Goals as a Student</h2>
+<p>Here are the aspirations I'm working toward. Tap a card to read more.</p>
+<div class="goal-grid">
+  <div class="goal-card" onclick="toggleGoalDetails(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGoalDetails(1);}">
+    <div class="goal-header" style="background-color: #d9688a;"><strong>Short-Term Goals</strong></div>
+    <p><strong>Build a strong foundation in web development.</strong></p>
+    <div class="goal-details" id="goal1-details">
+      <p>Over the next year, I want to get comfortable with HTML, CSS, and JavaScript by building small projects, like a personal portfolio and a few practice sites. I also plan to learn Git and GitHub so I can track my work and share it with others.</p>
+    </div>
+  </div>
+  <div class="goal-card" onclick="toggleGoalDetails(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGoalDetails(2);}">
+    <div class="goal-header" style="background-color: #c98f5a;"><strong>Long-Term Goals</strong></div>
+    <p><strong>Grow into a confident front-end developer.</strong></p>
+    <div class="goal-details" id="goal2-details">
+      <p>My long-term goal is to build responsive, accessible, and well-designed websites for real users. I want to keep learning new tools and frameworks, and work on projects that make a real difference for the people who use them.</p>
+    </div>
+  </div>
+  <div class="goal-card" onclick="toggleGoalDetails(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGoalDetails(3);}">
+    <div class="goal-header" style="background-color: #e8a0b4;"><strong>Personal Development</strong></div>
+    <p><strong>Become more organized, confident, and well-rounded.</strong></p>
+    <div class="goal-details" id="goal3-details">
+      <p>I'm working on managing my time better, communicating clearly, and learning from my mistakes instead of avoiding them. I also want to build healthy habits, like staying consistent and asking for help when I need it, so I can handle challenges with confidence.</p>
+    </div>
+  </div>
+  <div class="goal-card" onclick="toggleGoalDetails(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGoalDetails(4);}">
+    <div class="goal-header" style="background-color: #8b5e3c;"><strong>Career Goals</strong></div>
+    <p><strong>Start a career in tech and keep growing from there.</strong></p>
+    <div class="goal-details" id="goal4-details">
+      <p>I'm aiming for an internship or entry-level role in web development where I can learn from experienced teammates and contribute to real projects. Over time, I'd like to take on more responsibility, mentor others, and eventually move into a leadership role.</p>
+    </div>
+  </div>
+</div>
+  </section> 
+ 
+  <footer> 
+    <p>&copy; 2026 Trizhia Narciso. All rights reserved.</p> 
+  </footer> 
+  <div class="footer-divider"></div> 
+ <script> 
+    function toggleGoalDetails(n) {
+      const target = document.getElementById('goal' + n + '-details');
+      const wasOpen = target.classList.contains('active');
+
+      //close every card first, so only one can be open at a time.
+      document.querySelectorAll('.goal-details').forEach(d => d.classList.remove('active'));
+
+      //then open the clicked one (unless it was already open, which closes it)
+      if (!wasOpen) target.classList.add('active');
+    }
+  </script> 
+  <script> 
+    // Logout with confirmation 
+    function confirmLogout() { 
+      if (confirm("Are you sure you want to log out?")) { 
+        localStorage.removeItem('isLoggedIn'); 
+        window.location.href = 'login.html'; 
+      } 
+    } 
+  </script> 
+</body> 
+</html> 

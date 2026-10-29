@@ -1,0 +1,58 @@
+/* ===== Login / Sign Up (teddy bear theme) ===== */ 
+* { margin: 0; padding: 0; box-sizing: border-box; } 
+body { 
+  font-family: 'Nunito', 'Trebuchet MS', sans-serif; 
+  display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 24px; 
+  background: linear-gradient(270deg, #ffe3ea, #ffd9bf, #ffe9f2); 
+  background-size: 400% 400%; animation: gradientAnimation 18s ease infinite; 
+  color: #5a3a2a; 
+} 
+@keyframes gradientAnimation { 0%,100% { background-position: 0% 50%; } 50% { 
+background-position: 100% 50%; } } 
+.form-container { 
+  width: 360px; max-width: 100%; padding: 34px 28px 28px; 
+  background: #fff; border: 3px dashed #f4a6b8; border-radius: 28px; 
+  box-shadow: 0 0 0 8px #fff, 0 12px 28px rgba(90, 58, 42, .2); 
+  text-align: center; position: relative; 
+} 
+.bear { 
+  position: relative; width: 64px; height: 58px; margin: 0 auto 8px; border-radius: 50%; 
+  background: 
+    radial-gradient(circle at 50% 61%, #3b2418 0 4px, transparent 5px), 
+    radial-gradient(circle at 33% 40%, #3b2418 0 3.5px, transparent 4.5px), 
+    radial-gradient(circle at 67% 40%, #3b2418 0 3.5px, transparent 4.5px), 
+    radial-gradient(ellipse at 50% 68%, #f6d9bd 0 15px, transparent 16px), 
+    #c98f5a; 
+} 
+.bear::before, .bear::after { 
+  content: ""; position: absolute; top: -10px; width: 24px; height: 24px; border-radius: 50%; 
+  background: radial-gradient(circle, #f4a6b8 0 6px, #c98f5a 7px); z-index: -1; 
+} 
+.bear::before { left: -5px; } .bear::after { right: -5px; } 
+.form-container h2 { font-family: 'Fredoka', sans-serif; margin-bottom: 18px; color: #d9688a; 
+font-size: 2.6rem; } 
+label { display: block; text-align: left; margin: 8px 0 5px; font-weight: 800; font-size: .95rem; } 
+input[type="text"], input[type="password"] { 
+  width: 100%; padding: 11px 16px; margin-bottom: 8px; 
+  border: 2px solid #f4a6b8; border-radius: 999px; background: #fff8f0; color: #5a3a2a; 
+  font: 1rem 'Nunito', sans-serif; outline: none; 
+} 
+input[type="text"]:focus, input[type="password"]:focus { border-color: #d9688a; box-shadow: 0 0 
+0 3px #ffe3ea; } 
+button { 
+  width: 100%; padding: 13px; margin-top: 8px; background: #d9688a; color: #fff; border: none; 
+  border-radius: 999px; cursor: pointer; font: 800 1.05rem 'Nunito', sans-serif; 
+box-shadow: 0 4px 0 #a94a67; transition: background .2s; 
+} 
+button:hover { background: #c4557a; } 
+button:focus-visible, a:focus-visible { outline: 3px solid #5a3a2a; outline-offset: 2px; } 
+#errorMessage { color: #c0224f; margin-top: 10px; font-size: .9rem; font-weight: 700; 
+min-height: 1.2em; } 
+.show-password { display: flex; align-items: center; margin: 2px 0 6px; font-size: .9rem; } 
+.show-password label { margin: 0; font-weight: 600; } 
+.show-password input[type="checkbox"] { margin-right: 8px; accent-color: #d9688a; } 
+#passwordMatchMessage { font-size: .9rem; font-weight: 700; margin-bottom: 4px; text-align: 
+left; } 
+#toggleText { margin-top: 14px; font-size: .95rem; } 
+#toggleText a { color: #d9688a; font-weight: 800; } 
+@media (prefers-reduced-motion: reduce) { body { animation: none; } }

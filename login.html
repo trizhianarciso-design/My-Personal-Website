@@ -1,0 +1,136 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Login & Sign Up Page</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link 
+href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@
+400;600;800&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="login_style.css"> 
+</head> 
+<body> 
+  <div class="form-container"> 
+    <div class="bear" aria-hidden="true"></div> 
+    <h2 id="formTitle">Login</h2> 
+    <form id="authForm" onsubmit="return false;"> 
+      <label for="username">Username</label> 
+      <input type="text" id="username" autocomplete="username" required> 
+ 
+      <label for="password">Password</label> 
+      <input type="password" id="password" autocomplete="current-password" required> 
+ 
+      <!-- Show Password checkbox (visible on Login only) --> 
+      <div class="show-password" id="showPasswordContainer"> 
+        <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> 
+        <label for="showPassword">Show Password</label> 
+      </div> 
+ 
+      <!-- Confirm password (Sign Up only) --> 
+      <label for="confirmPassword" id="confirmPasswordLabel" style="display: none;">Confirm 
+Password</label> 
+      <input type="password" id="confirmPassword" style="display: none;"> 
+      <p id="passwordMatchMessage" style="display: none;"></p> 
+ 
+      <button type="button" id="submitBtn" onclick="handleSubmit()">Login</button> 
+      <p id="errorMessage" role="alert"></p> 
+ 
+      <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm(); return 
+false;">Sign Up</a></p> 
+    </form> 
+  </div> 
+ 
+  <script> 
+    let isLogin = true; 
+ 
+    function toggleForm() { 
+      const formTitle = document.getElementById('formTitle'); 
+      const confirmPassword = document.getElementById('confirmPassword'); 
+      const confirmPasswordLabel = document.getElementById('confirmPasswordLabel'); 
+      const submitButton = document.getElementById('submitBtn'); 
+      const toggleText = document.getElementById('toggleText'); 
+      const showPasswordContainer = document.getElementById('showPasswordContainer'); 
+ 
+      // Clear fields and messages when switching forms 
+      document.getElementById('authForm').reset(); 
+      document.getElementById('password').type = 'password'; 
+      document.getElementById('errorMessage').textContent = ''; 
+      document.getElementById('passwordMatchMessage').style.display = 'none'; 
+ 
+      if (isLogin) { 
+        formTitle.textContent = 'Sign Up'; 
+        confirmPassword.style.display = 'block'; 
+        confirmPasswordLabel.style.display = 'block'; 
+        submitButton.textContent = 'Sign Up'; 
+        toggleText.innerHTML = 'Already have an account? <a href="#" onclick="toggleForm(); return false;">Login</a>'; 
+        showPasswordContainer.style.display = 'none'; 
+        isLogin = false; 
+      } else { 
+        formTitle.textContent = 'Login'; 
+        confirmPassword.style.display = 'none'; 
+        confirmPasswordLabel.style.display = 'none'; 
+        submitButton.textContent = 'Login'; 
+        toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="toggleForm(); return false;">Sign Up</a>'; 
+        showPasswordContainer.style.display = 'flex'; 
+        isLogin = true; 
+      } 
+    } 
+ 
+    function handleSubmit() { 
+      const username = document.getElementById('username').value.trim(); 
+      const password = document.getElementById('password').value; 
+      const errorMessage = document.getElementById('errorMessage'); 
+ 
+      if (isLogin) { 
+        const storedUsername = localStorage.getItem('username'); 
+        const storedPassword = localStorage.getItem('password'); 
+        if (username && username === storedUsername && password === storedPassword) { 
+          localStorage.setItem('isLoggedIn', 'true'); 
+          alert('Welcome! Successfully logged in.'); 
+          window.location.href = 'index.html'; 
+        } else { 
+          errorMessage.textContent = 'Invalid username or password'; 
+        } 
+      } else { 
+        const confirmPassword = document.getElementById('confirmPassword').value; 
+        if (!username || !password) { 
+          errorMessage.textContent = 'Please fill out all fields'; 
+        } else if (password !== confirmPassword) { 
+          errorMessage.textContent = 'Passwords do not match'; 
+        } else { 
+          localStorage.setItem('username', username); 
+          localStorage.setItem('password', password); 
+          alert('Account created successfully! You can now log in.'); 
+          toggleForm(); // back to the login form 
+        } 
+      } 
+    } 
+ 
+    function togglePasswordVisibility() { 
+      const passwordField = document.getElementById('password'); 
+      passwordField.type = passwordField.type === 'password' ? 'text' : 'password'; 
+    } 
+ 
+    function checkPasswordMatch() { 
+      const password = document.getElementById('password').value; 
+      const confirmPassword = document.getElementById('confirmPassword').value; 
+      const message = document.getElementById('passwordMatchMessage'); 
+      if (confirmPassword === '') { 
+        message.style.display = 'none'; 
+      } else if (confirmPassword === password) { 
+        message.textContent = 'Passwords match'; 
+        message.style.color = 'green'; 
+        message.style.display = 'block'; 
+      } else { 
+        message.textContent = 'Passwords do not match'; 
+        message.style.color = '#c0224f'; 
+        message.style.display = 'block'; 
+      } 
+    } 
+document.getElementById('confirmPassword').addEventListener('input', 
+checkPasswordMatch); 
+document.getElementById('password').addEventListener('input', checkPasswordMatch); 
+</script> 
+</body> 
+</html>

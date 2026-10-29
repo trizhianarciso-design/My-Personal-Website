@@ -1,0 +1,116 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Skills I'm Developing</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link 
+href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@
+400;600;800&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+  <header> 
+    <span class="bear" aria-hidden="true"></span> 
+    <h1>Welcome to My Personal Website</h1> 
+  </header> 
+  <nav> 
+    <ul> 
+      <li><a href="index.html">HOME</a></li> 
+      <li class="dropdown"> 
+        <a href="#" class="dropbtn">ABOUT</a> 
+        <div class="dropdown-content"> 
+          <a href="skills.html">Skills I'm Developing</a> 
+          <a href="goals.html">My Goals as a Student</a> 
+          <a href="funfacts.html">Fun Facts About Me</a> 
+        </div> 
+      </li> 
+      <li><a href="gallery.html">GALLERY</a></li> 
+      <li><a href="contact.html">CONTACT</a></li> 
+      <li><a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">LOG 
+OUT</a></li> 
+    </ul> 
+  </nav> 
+ 
+  <section id="drop">
+    <h2>Skills I'm Developing</h2>
+    <p>As a student, I'm learning by doing. I've picked up skills in coding, design, and communication by taking on projects I actually care about, and I've learned that the best way to get good at something is to ship it, get feedback, and make it better. I enjoy the moments where different interests collide, like using technical skills to solve a creative problem or explaining a complex idea simply. That habit of trying, adjusting, and trying again is what keeps me growing.</p>
+    <div id="skills-panel">
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'IT')">Information Technology</button>
+        <button class="tablinks" onclick="openTab(event, 'InnovativeThinking')">Innovative Thinking</button>
+        <button class="tablinks" onclick="openTab(event, 'Communication')">Communication</button>
+        <button class="tablinks" onclick="openTab(event, 'AT')">Analytical Thinking</button>
+      </div>
+      <div id="IT" class="tabcontent">
+   <h3>Information Technology</h3>
+    <ul>
+     <li>Building a foundation in <strong>HTML, CSS, and JavaScript</strong></li>
+     <li>Learning the basics of <strong>responsive design</strong> for different screen sizes</li>
+     <li>Practicing <strong>accessible, user-friendly</strong> web page layouts</li>
+     <li>Developing <strong>problem-solving and debugging</strong> habits through small projects</li>
+   </ul>
+      </div>
+      <div id="InnovativeThinking" class="tabcontent" style="display:none;">
+        <h3>Innovative Thinking</h3>
+      <ul>
+       <li>Planning a website's <strong>structure and layout</strong> with sketches and wireframes</li>
+       <li>Choosing <strong>colors, fonts, and imagery</strong> that fit a clear visual style</li>
+       <li>Designing with the <strong>user experience</strong> in mind, so pages are easy to navigate</li>
+       <li>Turning design ideas into working pages with <strong>HTML, CSS, and JavaScript</strong></li>
+       <li>Testing and <strong>improving designs</strong> based on feedback</li>
+     </ul>
+      </div>
+      <div id="Communication" class="tabcontent" style="display:none;">
+        <h3>Communication</h3>
+      <ul>
+        <li>Explaining <strong>technical ideas in plain language</strong> to people with different backgrounds</li>
+        <li>Practicing <strong>clear written communication</strong> in emails, documentation, and project notes</li>
+        <li>Building <strong>active listening</strong> skills to understand what others actually need</li>
+        <li>Sharing ideas confidently through <strong>presentations and group discussions</strong></li>
+        <li>Giving and receiving <strong>constructive feedback</strong> on team projects</li>
+     </ul>
+      </div>
+      <div id="AT" class="tabcontent" style="display:none;">
+        <h3>Analytical Thinking</h3>
+      <ul>
+        <li>Breaking <strong>big problems into smaller steps</strong> to find a clear path forward</li>
+        <li>Using <strong>logical reasoning</strong> to spot patterns and trace errors in code</li>
+        <li>Practicing <strong>debugging</strong> by testing one change at a time and checking the results</li>
+        <li>Researching and <strong>comparing options</strong> before choosing a solution</li>
+        <li>Learning from mistakes by <strong>reviewing what went wrong</strong> and adjusting my approach</li>
+      </ul>
+      </div>
+    </div>
+  </section> 
+ 
+  <footer> 
+    <p>&copy; 2026 Trizhia Narciso. All rights reserved.</p> 
+  </footer> 
+  <div class="footer-divider"></div> 
+  <script> 
+    function openTab(evt, tabName) { 
+      const tabcontents = document.getElementsByClassName("tabcontent"); 
+      for (let i = 0; i < tabcontents.length; i++) tabcontents[i].style.display = "none"; 
+      const tablinks = document.getElementsByClassName("tablinks"); 
+      for (let i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active"); 
+      document.getElementById(tabName).style.display = "block"; 
+      evt.currentTarget.classList.add("active"); 
+    } 
+    // Show the first tab on load 
+    document.addEventListener("DOMContentLoaded", function () { 
+      document.querySelector('.tablinks').click(); 
+    }); 
+  </script> 
+  <script> 
+    // Logout with confirmation 
+    function confirmLogout() { 
+      if (confirm("Are you sure you want to log out?")) { 
+        localStorage.removeItem('isLoggedIn'); 
+        window.location.href = 'login.html'; 
+      } 
+    } 
+  </script> 
+</body> 
+</html>
